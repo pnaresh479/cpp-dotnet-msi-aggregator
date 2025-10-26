@@ -1,0 +1,37 @@
+pipeline {
+    agent { label 'built-in' } // running this job on jenkins controller node 
+    stages {
+        stage(' Getting dotnet artifact msi isntaller') {
+            steps {
+                copyArtifacts(
+                    projectName: 'dotnet-calculator2-pipeline',
+                    selector: lastSuccessful(),
+                    filter: '**/*.msi',
+                    target: 'aggreagted/msi/dotnet',
+                    fingerPrintArtifacts: true
+                )
+            }
+        }
+
+        stage( 'Getting cpp artifact msi installer') {
+            steps {
+                copyArtifacts(
+                    projectName: 'CMakeProject1-pipeline',
+                    selector: lastSuccessful(),
+                    filter: '**/*.msi',
+                    target: 'aggreagted/msi/cpp',
+                    fingerPrintArtifacts: true
+                )
+            }
+        }
+
+        stage(' verification of artifacts') {
+            steps {
+                bat 'dir aggreagted\\msi\\dotnet'
+                bat 'dir aggreagted\\msi\\cpp'
+                
+            }
+        }
+
+    }
+}
