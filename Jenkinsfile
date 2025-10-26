@@ -8,7 +8,7 @@ pipeline {
                     selector: lastSuccessful(),
                     filter: '**/*.msi',
                     target: 'aggreagted/msi/dotnet',
-                    fingerPrintArtifacts: true
+                    fingerprintArtifacts: true
                 )
             }
         }
@@ -20,7 +20,7 @@ pipeline {
                     selector: lastSuccessful(),
                     filter: '**/*.msi',
                     target: 'aggreagted/msi/cpp',
-                    fingerPrintArtifacts: true
+                    fingerprintArtifacts: true
                 )
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 bat 'dir aggreagted\\msi\\dotnet'
                 bat 'dir aggreagted\\msi\\cpp'
-                
+
             }
         }
 
