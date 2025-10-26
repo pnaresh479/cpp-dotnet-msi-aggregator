@@ -35,7 +35,7 @@ pipeline {
 
         stage('Archive aggregated artifacts') {
             steps {
-                archiveArtifacts 'aggreagted/msi/**/*.msi', fingerprint: true
+                archiveArtifacts artifacts: 'aggreagted/msi/**/*.msi', fingerprint: true
             }
         }
 
