@@ -2,8 +2,8 @@ pipeline {
     agent { label 'built-in' } // running this job on jenkins controller node 
 
      parameters {
-        booleanParam(name: 'DOTNET_CAL_BUILD_NUMBER', defaultValue: '', description: 'BUILD NUMBER DOTNET')
-        booleanParam(name: 'CPP_CAL_BUILD_NUMBER', defaultValue: '', description: 'BUILD NUMBER CPP')
+        string(name: 'DOTNET_CAL_BUILD_NUMBER', defaultValue: '', description: 'BUILD NUMBER DOTNET')
+        string(name: 'CPP_CAL_BUILD_NUMBER', defaultValue: '', description: 'BUILD NUMBER CPP')
     }
     stages {
         stage(' Getting dotnet artifact msi isntaller') {
